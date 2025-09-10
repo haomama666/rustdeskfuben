@@ -1,24 +1,24 @@
-name: 名称：全 Flutters CI
+名称：名称：全 Flutters CI
 
-on:
-  workflow_dispatch:
-  pull_request:
-    paths-ignore:
-    - "docs/**"
+在:
+  工作流触发:
+  拉取请求:
+    忽略路径:
+    - "文档/**"
     - "README.md"
-  push:
-    branches:
+  推:
+    分支:
       -       - 主人
-    paths-ignore:
+    忽略路径:
       - ".github/**"
-      - "docs/**"
+      - "文档/**"
       - "README.md"
       - "res/**"
       - "appimage/**"
       - "flatpak/**"
 
-jobs:
-  run-ci:
-    uses:     用途: ./.github/workflows/flutter-build.yml
-    with:
-      upload-artifact: true
+工作:
+  运行持续集成:
+: ./.github/workflows/flutter-build.yml
+    与：
+      上传艺术品：真
