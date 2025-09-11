@@ -4,6 +4,7 @@
 )]
 
 use librustdesk::*;
+mod compile_time_config;
 
 #[cfg(any(target_os = "android", target_os = "ios", feature = "flutter"))]
 fn main() {
@@ -11,6 +12,8 @@ fn main() {
         eprintln!("Global initialization failed.");
         return;
     }
+    // 初始化编译时配置
+    compile_time_config::ensure_compile_time_config_initialized();
     common::test_rendezvous_server();
     common::test_nat_type();
     common::global_clean();
@@ -26,6 +29,8 @@ fn main() {
     if !common::global_init() {
         return;
     }
+    // 初始化编译时配置
+    compile_time_config::ensure_compile_time_config_initialized();
     #[cfg(all(windows, not(feature = "inline")))]
     unsafe {
         winapi::um::shellscalingapi::SetProcessDpiAwareness(2);
@@ -41,6 +46,8 @@ fn main() {
     if !common::global_init() {
         return;
     }
+    // 初始化编译时配置
+    compile_time_config::ensure_compile_time_config_initialized();
     use clap::App;
     use hbb_common::log;
     let args = format!(
